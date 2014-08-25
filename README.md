@@ -1,8 +1,9 @@
 calculate.js
 ============
 
-<b>A small library that solves expressions step-by-step following the BODMAS principle.</b>
+<b>A small library i created for a project that solves expressions step-by-step following the BODMAS principle.</b>
 
+It uses the <a href='https://github.com/silentmatt/js-expression-eval/blob/master/parser.js'>js-expression-eval</a> so be sure to grab it and include it in your html page else calculate.js won't work.
 
 <i>Not everything is implemented yet. </i>
 <i>Currently, the script can divide,multiply, add and substract while keeping in mind about brackets. </i>
