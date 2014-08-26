@@ -8,6 +8,7 @@ It uses the <a href='https://github.com/silentmatt/js-expression-eval/blob/maste
 <i>Not everything is implemented yet. </i>
 <i>Currently, the script can divide,multiply, add and substract while keeping in mind about brackets. </i>
 
+<i>Beware! There are many bad practises included in the script. It was created in a hurry and it needs some clean up.
 
 <b>To use it :</b>
 
