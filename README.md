@@ -33,17 +33,18 @@ It uses the <a href='https://github.com/silentmatt/js-expression-eval/blob/maste
 
 <i>Contains every state of the expression, as the steps go on:
 
-<code>calc.results
+<code>calc.expressionStates
 
 <i> Contains every answer of each calculation
 
 <code>calc.answers
 
-<i> Contains the current's step position of operator that the library will solve
+<i> It holds the answer of the current solving step
 
 <code>calc.currentAnswer
 
-
+<h1> Documentation</h1>
+Check <a href='https://dl.dropboxusercontent.com/u/10178928/calculate.js/index.html'>here</a> for more details
 <h1>License 
 
 calculate.js is released under the <a href='http://opensource.org/licenses/MIT'>MIT License.</a>
