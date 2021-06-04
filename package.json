@@ -1,0 +1,22 @@
+{
+  "name": "calculate.js",
+  "version": "0.0.1",
+  "description": "solves expressions step-by-step following the BODMAS principle",
+  "main": "calculate.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j0hnskot/calculate.js.git"
+  },
+  "author": "John Skoteiniotis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/j0hnskot/calculate.js/issues"
+  },
+  "homepage": "https://github.com/j0hnskot/calculate.js#readme",
+  "devDependencies": {
+    "jest": "^27.0.4"
+  }
+}

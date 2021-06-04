@@ -1,6 +1,6 @@
 /**
- * @author      John Skotiniotis <j0hnskot@gmail.com>
- * @copyright    2014 - John Skotiniotis
+ * @author      John Skoteiniotis <j0hnskot@gmail.com>
+ * @copyright    2021 - John Skoteiniotis
  * @license      {@link http://choosealicense.com/licenses/mit/ | MIT License}
  */
 
@@ -14,15 +14,6 @@
  */
 
 var Calc = function () {
-
-
-
-    /**
-     *
-     * @property {Object} parser - Keep a reference to the Parser Object.
-     *@private
-     */
-    this.parser = Parser;
 
 
     /**
@@ -255,7 +246,7 @@ Calc.prototype = {
 
         }
 
-        this.currentAnswer = this.parser.evaluate(this.selectedPart);
+        this.currentAnswer = eval(this.selectedPart);
 
 
 
@@ -277,7 +268,7 @@ Calc.prototype = {
 
         this.output();
 
-
+        return this.currentAnswer;
 
 
 
@@ -420,3 +411,5 @@ Calc.prototype = {
 
 
 };
+
+module.exports = Calc
