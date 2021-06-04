@@ -15,14 +15,12 @@
 
 var Calc = function () {
 
-
     /**
      * @readonly
      * @property {Boolean} consoleOutput  - Is console output needed? Is set in the init() Method.
      * @default
      */
     this.consoleOutput = false;
-
 
     /**
      * @readonly
@@ -31,14 +29,12 @@ var Calc = function () {
      */
     this.answers = [];
 
-
     /**
      * @readonly
      * @property {Array} expressionStates - Stores expression's state after each calculation step.
      *
      */
     this.expressionStates = [];
-
 
     /**
      * @readonly
@@ -47,14 +43,12 @@ var Calc = function () {
      */
     this.complete = false;
 
-
     /**
      * @readonly
      * @property {Integer} currentOperatorPosition - Stores the position of the selected operator in the expression.
      * @default
      */
     this.currentOperatorPosition = null;
-
 
     /**
      * @readonly
@@ -64,7 +58,6 @@ var Calc = function () {
      */
     this.selectedPart = '';
 
-
     /**
      * @readonly
      * @property {String} currentAnswer - It holds the answer of the current solving step.
@@ -73,7 +66,6 @@ var Calc = function () {
      */
     this.currentAnswer = '';
 
-
     /**
      * @readonly
      * @property {Integer} firstBracket - It holds the position of the first bracket, if any.
@@ -81,7 +73,6 @@ var Calc = function () {
      * @default
      */
     this.firstBracket = 'NotSet';
-
 
     /**
      * @readonly
@@ -128,11 +119,7 @@ var Calc = function () {
      */
     this.gotNegative = false;
 
-
-
 };
-
-
 
 Calc.prototype = {
 
@@ -177,8 +164,6 @@ Calc.prototype = {
         this.selectedPart = this.expression;
 
         //check for brackets
-
-
         if ((this.firstBracket = this.expression.indexOf('(')) != -1) {
 
 
@@ -187,16 +172,10 @@ Calc.prototype = {
 
 
             while (this.firstBracket < this.selectedPart.indexOf('(', this.firstBracket + 1)) {
-
                 this.firstBracket++;
 
             }
             this.selectedPart = this.expression.slice(this.firstBracket, this.lastBracket + 1);
-
-
-
-
-
         }
 
         //check if a multiplication or division exists in the expression (or the selected part if there are brackets)
@@ -208,17 +187,13 @@ Calc.prototype = {
 
         } else if (this.selectedPart.indexOf('+') != -1 || this.selectedPart.indexOf('-') != -1) { //Check for add or substract
 
-
             this.findPart(false);
-
-
 
         } else { //remove brackets and move to the next part or finish the calculation
 
             if (this.firstBracket == -1) {
                 this.complete = true;
                 return;
-
             }
 
         }
@@ -265,10 +240,6 @@ Calc.prototype = {
         this.output();
 
         return this.currentAnswer;
-
-
-
-
     },
 
 
@@ -375,9 +346,9 @@ Calc.prototype = {
 
         while (!this.complete) {
             this.calculateStep();
-
-
         }
+
+        return this.currentAnswer;
 
     },
 
@@ -396,16 +367,7 @@ Calc.prototype = {
         console.log("All results: " + this.expressionStates);
         console.log("All answers: " + this.answers);
         console.log('********************');
-
-
-
-
-
     },
-
-
-
-
 };
 
 module.exports = Calc
