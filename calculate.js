@@ -147,7 +147,7 @@ Calc.prototype = {
     init: function (expression, consoleOutput) {
 
         this.consoleOutput = consoleOutput || false;
-        this.expression = expression;
+        this.expression = expression.replace(/ /g,'');
         this.answers = [];
         this.expressionStates = [];
         this.complete = false;
@@ -168,10 +168,6 @@ Calc.prototype = {
 
     calculateStep: function () {
 
-
-
-        this.selectedPart = '';
-        this.currentAnswer = '';
         this.firstBracket = 'NotSet';
         this.lastBracket = 'NotSet';
         this.firstPoint = 'NotSet';
