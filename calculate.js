@@ -72,7 +72,7 @@ var Calc = function () {
      *
      * @default
      */
-    this.firstBracket = 'NotSet';
+    this.firstBracket = null;
 
     /**
      * @readonly
@@ -80,7 +80,7 @@ var Calc = function () {
      *
      * @default
      */
-    this.lastBracket = 'NotSet';
+    this.lastBracket = null;
 
 
     /**
@@ -89,7 +89,7 @@ var Calc = function () {
      *
      * @default
      */
-    this.firstPoint = 'NotSet';
+    this.firstPoint = null;
 
 
     /**
@@ -98,7 +98,7 @@ var Calc = function () {
      *
      * @default
      */
-    this.lastPoint = 'NotSet';
+    this.lastPoint = null;
 
 
 
@@ -108,7 +108,7 @@ var Calc = function () {
      *
      * @default
      */
-    this.operator = 'NotSet';
+    this.operator = null;
 
 
     /**
@@ -152,29 +152,22 @@ Calc.prototype = {
      *
      */
 
-
     calculateStep: function () {
 
-        this.firstBracket = 'NotSet';
-        this.lastBracket = 'NotSet';
-        this.firstPoint = 'NotSet';
-        this.lastPoint = 'NotSet';
-        this.operator = 'NotSet';
+        this.firstBracket = null;
+        this.lastBracket = null;
+        this.firstPoint = null;
+        this.lastPoint = null;
+        this.operator = null;
         this.gotNegative = false;
         this.selectedPart = this.expression;
 
+        let firstClosingBracket;
         //check for brackets
-        if ((this.firstBracket = this.expression.indexOf('(')) != -1) {
-
-
-            this.lastBracket = this.expression.indexOf(')');
-            this.selectedPart = this.expression.slice(this.firstBracket, this.lastBracket + 1);
-
-
-            while (this.firstBracket < this.selectedPart.indexOf('(', this.firstBracket + 1)) {
-                this.firstBracket++;
-
-            }
+        if ((firstClosingBracket = this.expression.indexOf(')')) != -1) {
+            // TODO: doesn't make sense, rewrite bracket property names (and everything else I guess)
+            this.lastBracket = firstClosingBracket;
+            this.firstBracket = this.expression.lastIndexOf("(", this.lastBracket);
             this.selectedPart = this.expression.slice(this.firstBracket, this.lastBracket + 1);
         }
 
@@ -184,30 +177,24 @@ Calc.prototype = {
 
             this.findPart(true);
 
-
         } else if (this.selectedPart.indexOf('+') != -1 || this.selectedPart.indexOf('-') != -1) { //Check for add or substract
 
             this.findPart(false);
 
         } else { //remove brackets and move to the next part or finish the calculation
-
-            if (this.firstBracket == -1) {
+            if (this.firstBracket == null) {
                 this.complete = true;
                 return;
             }
 
         }
 
-
-
-        if (this.firstPoint != 'NotSet') {
+        if (this.firstPoint != null) {
             if (this.gotNegative) {
                 this.selectedPart = this.selectedPart.slice(this.firstPoint - 1, this.lastPoint + 1);
                 this.gotNegative = false;
             } else {
                 this.selectedPart = this.selectedPart.slice(this.firstPoint, this.lastPoint + 1);
-
-
             }
 
         } else {
@@ -218,10 +205,6 @@ Calc.prototype = {
         }
 
         this.currentAnswer = eval(this.selectedPart);
-
-
-
-
 
         //replace the solved part and the brackets (if any are left)
 
@@ -269,24 +252,22 @@ Calc.prototype = {
 
 
 
-                if (this.firstPoint == 'NotSet') {
+                if (this.firstPoint == null) {
                     this.firstPoint = i;
                 } else {
                     this.lastPoint = i;
 
                 }
 
-
-
             } else {
 
-                if (this.operator == 'NotSet') {
+                if (this.operator == null) {
 
 
 
                     if (gotMultOrDiv && (this.selectedPart[i] == '+' || this.selectedPart[i] == '-')) {
 
-                        this.firstPoint = 'NotSet';
+                        this.firstPoint = null;
                         continue;
 
                     } else if (this.selectedPart[i] == '-' && (this.selectedPart[i - 1] == '(' || this.selectedPart[i - 1] === undefined)) {
@@ -370,4 +351,4 @@ Calc.prototype = {
     },
 };
 
-module.exports = Calc
+module.exports = Calc;

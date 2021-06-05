@@ -21,3 +21,21 @@ test('4 * (5 + 3) to equal 32', () => {
     calc.init('4 * (5 + 3)')
     expect(calc.solve()).toBe(32);
 });
+
+test('30/5 * 3 to step to 6 × 3', () => {
+    calc.init('30/5 * 3')
+    calc.calculateStep();
+    expect(calc.expression).toBe("6*3");
+});
+
+test('30/5 * 3 = 18', () => {
+    calc.init('30/5 * 3')
+    expect(calc.solve()).toBe(18);
+});
+
+test('3 * (4 * (5*5)) / 6 + 7 – 8 = 49', () => {
+    calc.init('3 * (4 * (5*5)) / 6 + 7 - 8')
+    expect(calc.calculateStep()).toBe(25);
+    expect(calc.calculateStep()).toBe(100);
+    expect(calc.solve()).toBe(49);
+});
